@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="cool_weather"/>
+    <version value="1"/>
+    <list>
+        <mapping class="cn.edu.jssvc.linhao.coolweather.android.db.Province"/>
+        <mapping class="cn.edu.jssvc.linhao.coolweather.android.db.City"/>
+        <mapping class="cn.edu.jssvc.linhao.coolweather.android.db.County"/>
+    </list>
+</litepal>
