@@ -49,10 +49,24 @@ public class WeatherActivity extends AppCompatActivity {
     public SwipeRefreshLayout swipeRefresh;
     private String mWeatherId;
 
+    public DrawerLayout drawerLayout;
+    private Button navButton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
+
+        //滑动菜单
+        drawerLayout=findViewById(R.id.drawer_layout);
+        navButton=findViewById(R.id.nav_button);
+
+        navButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
 
         //初始化各控件
         weatherLayout = (ScrollView) findViewById(R.id.weather_layout);
@@ -92,7 +106,7 @@ public class WeatherActivity extends AppCompatActivity {
     /**
      * 根据天气id请求城市天气信息
      */
-    private void requestWeather(final String weatherId) {
+    void requestWeather(final String weatherId) {
             String weatherUrl="http://guolin.tech/api/weather?cityid="+weatherId;
             HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
                 @Override
