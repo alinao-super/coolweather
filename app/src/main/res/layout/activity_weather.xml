@@ -6,13 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
+
     <ImageView
         android:id="@+id/bing_pic_img"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg"/>
-
+    
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,5 +37,6 @@
         </LinearLayout>
 
     </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>
