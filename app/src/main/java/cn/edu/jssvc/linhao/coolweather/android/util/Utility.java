@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import cn.edu.jssvc.linhao.coolweather.android.db.City;
 import cn.edu.jssvc.linhao.coolweather.android.db.County;
 import cn.edu.jssvc.linhao.coolweather.android.db.Province;
+import cn.edu.jssvc.linhao.coolweather.android.gson.Weather;
 
 public class Utility {
     /**
@@ -81,4 +82,15 @@ public class Utility {
     /**
      * 将返回的JSON数据解析成Weather实体类
      */
+    public static Weather handleWeatherResponse(String response){
+        try{
+            JSONObject jsonObject=new JSONObject(response);
+            JSONArray jsonArray=jsonObject.getJSONArray("HeWeather");
+            String weatherContent=jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
