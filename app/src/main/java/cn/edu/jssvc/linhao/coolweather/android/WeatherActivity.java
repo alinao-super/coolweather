@@ -27,6 +27,7 @@ import java.io.IOException;
 
 import cn.edu.jssvc.linhao.coolweather.android.gson.Forecast;
 import cn.edu.jssvc.linhao.coolweather.android.gson.Weather;
+import cn.edu.jssvc.linhao.coolweather.android.service.AutoUpdateService;
 import cn.edu.jssvc.linhao.coolweather.android.util.HttpUtil;
 import cn.edu.jssvc.linhao.coolweather.android.util.Utility;
 import okhttp3.Call;
@@ -151,6 +152,8 @@ public class WeatherActivity extends AppCompatActivity {
         titleUpdateTime.setText(updateTime);
         degreeText.setText(degree);
         weatherInfoText.setText(weatherInfo);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
         forecastLayout.removeAllViews();
         for(Forecast forecast : weather.forecastList){
             View view = LayoutInflater.from(this).inflate(R.layout.forecast_item,forecastLayout,false);
